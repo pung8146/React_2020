@@ -38,3 +38,11 @@ export default class App extends React.Component {
   }
 }
 </pre>
+
+===
+Class 는 Hook 이 나오기전까지 속도는 느리지만 , 다양한 기능때문에 사용되었으나
+지금은 Hook 이 출시된 이후로 사용되지 않는다.
+==
+궁금한점 
+
+--save 를 적어줘야됨
