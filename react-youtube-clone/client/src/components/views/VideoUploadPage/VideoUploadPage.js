@@ -1,6 +1,7 @@
 // 예전에는 리액트 Hook 나오기전에클래스를 자주씀
 // 왜냐면 속도는 느리지만 많은 기능을 구현하기 쉬워서
 // Hook 이후로 퍼모펀스가 더좋은 함수형으로 바뀜
+// axidos 추가
 import React, { useState } from "react";
 import { Typography, Button, Form, message, Input, Icon } from "antd";
 import Dropzone from "react-dropzone";
