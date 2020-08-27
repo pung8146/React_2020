@@ -48,7 +48,7 @@ function VideoUploadPage(props) {
   };
 
   const onCategoryChange = (e) => {
-    setCategoryChange(e.currentTarget.value);
+    setCategory(e.currentTarget.value);
   };
 
   const onDrop = (files) => {
@@ -56,7 +56,7 @@ function VideoUploadPage(props) {
     const config = {
       header: { "content-type": "multipart/form-data" },
     };
-    formData.append("file", fiels[0]);
+    formData.append("file", files[0]);
 
     Axios.post("/api/video/uploadfiles", formData, config).then((response) => {
       if (response.data.success) {
@@ -92,7 +92,7 @@ function VideoUploadPage(props) {
       filePath: FilePath,
       category: Category,
       duration: Duration,
-      thumbnail: Thumbnail,
+      thumbnail: ThumbnailPath,
     };
 
     Axios.post("/api/video/uploadVideo", variables).then((response) => {
@@ -161,7 +161,7 @@ function VideoUploadPage(props) {
 
         <select onChange={onPrivateChange}>
           {PrivateOptions.map((item, index) => (
-            <option key={index} value={(item, value)}>
+            <option key={index} value={item.value}>
               {item.label}
             </option>
           ))}
@@ -172,7 +172,7 @@ function VideoUploadPage(props) {
 
         <select onChange={onCategoryChange}>
           {CategoryOptions.map((item, index) => (
-            <option key={index} value={(item, value)}>
+            <option key={index} value={item.value}>
               {item.label}
             </option>
           ))}
