@@ -7,7 +7,7 @@ import { Typography, Button, Form, message, Input, Icon } from "antd";
 import Dropzone from "react-dropzone";
 import Axios from "axios";
 import { useSelector } from "react-redux";
-import { response } from "express";
+// import { response } from "express";
 
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -32,7 +32,7 @@ function VideoUploadPage(props) {
   const [Category, setCategory] = useState("Film & Animation");
   const [FilePath, setFilePath] = useState("");
   const [Duration, setDuration] = useState("");
-  const [ThumbnailPath, setThumbnailPath] = useState("initialState");
+  const [ThumbnailPath, setThumbnailPath] = useState("");
 
   const onTitlChange = (e) => {
     console.log(e.currentTarget);
@@ -58,10 +58,11 @@ function VideoUploadPage(props) {
     };
     formData.append("file", files[0]);
 
-    Axios.post("/api/video/uploadfiles", formData, config).then((response) => {
+    Axios.post("/api/video/uploadfiles", formData, config)
+    .then((response) => {
       if (response.data.success) {
         let variable = {
-          url: response.date.url,
+           url: response.data.url,
           fileName: response.data.fileName,
         };
 
@@ -138,14 +139,14 @@ function VideoUploadPage(props) {
 
           {/* Thumbnail */}
 
-          {ThumbnailPath && (
+          {ThumbnailPath && 
             <div>
               <img
                 src={`http://localhost:5000/${ThumbnailPath}`}
                 alt="thumbnail"
               />
             </div>
-          )}
+          }
         </div>
 
         <br />
