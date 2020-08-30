@@ -37,3 +37,9 @@ input.error {
   height: 5px;
   margin-top: -12px;
 }
+
+.duration {
+  bottom: 0;
+  right:  0;
+  position: absolute;
+}
