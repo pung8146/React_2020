@@ -8,7 +8,7 @@ const multer = require("multer");
 var ffmpeg = require("fluent-ffmpeg");
 // STORAGE MULTER CONFIG
 let storage = multer.diskStorage({
-  destination: (res, file, cb) => {
+  destination: (req, file, cb) => {
     cb(null, "uploads/");
   },
   // 데스티네이션은 파일을 어디에 업로드 할지 알려줌
@@ -110,8 +110,8 @@ router.post("/thumbnail", (req, res) => {
           folder: "uploads/thumbnails",
           size: "320x240",
           filename: "thumbnail-%b.png",
-        });
-    });
-});
+        })
+    })
+})
 
 module.exports = router;

@@ -58,29 +58,29 @@ function VideoUploadPage(props) {
     };
     formData.append("file", files[0]);
 
-    Axios.post("/api/video/uploadfiles", formData, config)
-    .then((response) => {
+    Axios.post('/api/video/uploadfiles', formData, config)
+    .then(response => {
       if (response.data.success) {
         let variable = {
            url: response.data.url,
-          fileName: response.data.fileName,
-        };
+          fileName: response.data.fileName
+        }
 
-        setFilePath(response.data.url);
+        // setFilePath(response.data.url);
 
-        Axios.post("/api/video/thumbnail", variable).then((response) => {
+        Axios.post('/api/video/thumbnail', variable).then(response => {
           if (response.data.success) {
             setDuration(response.data.fileDuration);
             setThumbnailPath(response.data.url);
           } else {
             alert("썸네일 생성에 실패했습니다.");
           }
-        });
+        })
       } else {
         alert("비디오 업로드에 실패했습니다.");
       }
-    });
-  };
+    })
+  }
 
   const onSumit = (e) => {
     e.preventDefault();
