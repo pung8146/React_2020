@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 const port = 3000
 const bodyParser = require('body-parser');
+
+const config = require('./config/key');
+
 const { User } = require("./models/User");
 
 //application/x-www-from-urlencoded 분석
@@ -11,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://pung8146:qwe123@reactstudy.kq8wb.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+mongoose.connect(config.mongoURI, {
   useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log('MongoDb Connected...'))
 .catch(err => console.log(err))
