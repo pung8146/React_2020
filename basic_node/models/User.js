@@ -71,10 +71,10 @@ userSchema.methods.generateToken = function(cb) {
   
   var token = jwt.sign(user._id.toHexString(),'secretToken')
 
-  user._id + 'secretToken' = token
+  // user._id + 'secretToken' = token
 
 
-  'secretToken' -> user._id
+  // 'secretToken' -> user._id
 
   user.token = token
   user.save(function(err, user) {
@@ -87,7 +87,7 @@ userSchema.statics.findByToken = function(token, cb) {
   var user = this;
 
   //토큰을 decode 한다.
-  jwt.veritfy(token, 'secretToken', function(err, decoded) {
+  jwt.verify(token, 'secretToken', function(err, decoded) {
     // 유저 아이디를 이용해서 유저를 찾은 다음에
     // 클라이언트에서 가져온 토큰과 데이터베이스에 보관된 토큰일치하는지 확인
 
